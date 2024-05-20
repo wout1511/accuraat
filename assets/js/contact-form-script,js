@@ -1,0 +1,25 @@
+(function () {
+  emailjs.init("h6D_rg6gIHF1RZX6Q"); // Vervang "YOUR_USER_ID" door je EmailJS User ID
+})();
+
+document
+  .getElementById("contactForm")
+  .addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    // Deze gegevens moeten overeenkomen met de velden in je email template
+    const templateParams = {
+      name: event.target.name.value,
+      email: event.target.email.value,
+      message: event.target.message.value,
+    };
+
+    emailjs.send("service_yyaorwy", "template_vaktne3", templateParams).then(
+      function (response) {
+        console.log("SUCCESS!", response.status, response.text);
+      },
+      function (error) {
+        console.log("FAILED...", error);
+      }
+    );
+  });

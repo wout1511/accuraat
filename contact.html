@@ -130,7 +130,9 @@
               <div class="content-inner">
                 <div class="logo">
                   <a href="index.html"
-                    ><img src="assets/images/resources/logo.png" alt=""
+                    ><img
+                      src="assets/images/resources/logo.png"
+                      alt="Logo Accuraat Dakwerken"
                   /></a>
                 </div>
                 <div class="content-box">
@@ -265,10 +267,10 @@
                         <a href="index.html">Startpagina</a>
                       </li>
                       <li>
-                        <a href="services.html">Diensten</a>
+                        <a href="diensten.html">Diensten</a>
                         <ul>
                           <li class="dropdown">
-                            <a href="services.html">Alle diensten</a>
+                            <a href="diensten.html">Alle diensten</a>
                             <ul>
                               <li>
                                 <a href="platdak.html">Plat Dak</a>
@@ -292,7 +294,7 @@
                         </ul>
                       </li>
                       <li>
-                        <a href="about.html">Over ons</a>
+                        <a href="overons.html">Over ons</a>
                       </li>
                       <li>
                         <a href="projecten.html">Projecten</a>
@@ -364,8 +366,8 @@
                   <h2>Geef ons een seintje</h2>
                 </div>
                 <form
-                  id="contact-form"
-                  name="contact_form"
+                  id="contactForm"
+                  name="contactForm"
                   class="default-form2"
                   method="post"
                 >
@@ -375,8 +377,8 @@
                         <div class="input-box">
                           <input
                             type="text"
-                            name="form_name"
-                            id="formName"
+                            name="name"
+                            id="name"
                             placeholder="Naam"
                             required=""
                           />
@@ -388,8 +390,8 @@
                         <div class="input-box">
                           <input
                             type="email"
-                            name="form_email"
-                            id="formEmail"
+                            name="email"
+                            id="email"
                             placeholder="Email"
                             required=""
                           />
@@ -404,9 +406,9 @@
                         <div class="input-box">
                           <input
                             type="text"
-                            name="form_phone"
+                            name="phone"
                             value=""
-                            id="formPhone"
+                            id="phone"
                             placeholder="Telefoon"
                           />
                         </div>
@@ -417,9 +419,9 @@
                         <div class="input-box">
                           <input
                             type="text"
-                            name="form_subject"
+                            name="subject"
                             value=""
-                            id="formSubject"
+                            id="subject"
                             placeholder="Onderwerp"
                           />
                         </div>
@@ -432,8 +434,8 @@
                       <div class="form-group">
                         <div class="input-box">
                           <textarea
-                            name="form_message"
-                            id="formMessage"
+                            name="message"
+                            id="message"
                             placeholder="Bericht"
                             required=""
                           ></textarea>
@@ -592,17 +594,17 @@
                     <div class="footer-logo-style1">
                       <a href="index.html">
                         <img
-                          src="assets/images/resources/logo.png"
-                          alt="Awesome Logo"
-                          title=""
+                          src="assets/images/resources/logo3.png"
+                          alt="Logo Accuraat Dakwerken"
+                          title="Logo Accuraat Dakwerken"
                         />
                       </a>
                     </div>
                     <div class="text">
                       <p>
-                        Onze naam zegt het al wij doen ons werk correct & proper
-                        met het juiste kwaliteit materiaal wordt het dak
-                        compleet afgewerkt!
+                        Bij Accuraat Dakwerken staan vakmanschap en
+                        betrouwbaarheid centraal voor al uw dakwerken. een
+                        succes te maken.
                       </p>
                     </div>
                   </div>
@@ -621,8 +623,8 @@
                   <div class="footer-widget-links">
                     <ul>
                       <li><a href="index.html">Home</a></li>
-                      <li><a href="services.html">Diensten</a></li>
-                      <li><a href="about.html">Over ons</a></li>
+                      <li><a href="diensten.html">Diensten</a></li>
+                      <li><a href="overons.html">Over ons</a></li>
                       <li><a href="projecten.html">Projecten</a></li>
                       <li><a href="contact.html">Contact</a></li>
                     </ul>
@@ -739,7 +741,10 @@
         </span>
         <div class="logo-box">
           <a href="index.html" aria-label="logo image">
-            <img src="assets/images/resources/logo-nav.png" alt="" />
+            <img
+              src="assets/images/resources/logo-nav.png"
+              alt="Logo Accuraat Dakwerken"
+            />
           </a>
         </div>
         <div class="mobile-nav__container"></div>
@@ -807,5 +812,41 @@
 
     <!-- Template js -->
     <script src="assets/js/custom.js"></script>
+
+    <script
+      type="text/javascript"
+      src="https://cdn.emailjs.com/dist/email.min.js"
+    ></script>
+
+    <!--====== Contact Form Min JS ======-->
+    <script type="text/javascript">
+      (function () {
+        emailjs.init("h6D_rg6gIHF1RZX6Q"); // Vervang "YOUR_USER_ID" door je EmailJS User ID
+      })();
+
+      document
+        .getElementById("contactForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+
+          // Deze gegevens moeten overeenkomen met de velden in je email template
+          const templateParams = {
+            name: event.target.name.value,
+            email: event.target.email.value,
+            message: event.target.message.value,
+          };
+
+          emailjs
+            .send("service_byecq9v", "template_vaktne3", templateParams)
+            .then(
+              function (response) {
+                console.log("SUCCESS!", response.status, response.text);
+              },
+              function (error) {
+                console.log("FAILED...", error);
+              }
+            );
+        });
+    </script>
   </body>
 </html>
