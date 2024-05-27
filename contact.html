@@ -23,7 +23,10 @@
       href="assets/images/favicons/favicon-16x16.png"
     />
     <link rel="manifest" href="assets/images/favicons/site.webmanifest" />
-    <meta name="description" content="Accuraat dakwerken || Contact" />
+    <meta
+      name="description"
+      content="Neem contact op met Accuraat Dakwerken in Beringen voor al uw vragen over platte daken, nieuwbouw en herstellingen. Wij staan klaar om u te helpen met deskundig advies en service."
+    />
 
     <!-- Fonts -->
     <link
@@ -407,21 +410,22 @@
                           <input
                             type="text"
                             name="phone"
-                            value=""
                             id="phone"
+                            required=""
                             placeholder="Telefoon"
                           />
                         </div>
                       </div>
                     </div>
+
                     <div class="col-xl-6">
                       <div class="form-group">
                         <div class="input-box">
                           <input
                             type="text"
                             name="subject"
-                            value=""
                             id="subject"
+                            required=""
                             placeholder="Onderwerp"
                           />
                         </div>
@@ -467,6 +471,12 @@
                     </div>
                   </div>
                 </form>
+                <div id="successMessage" style="display: none; color: green">
+                  Succesvol verzonden!
+                </div>
+                <div id="errorMessage" style="display: none; color: red">
+                  Er is een fout opgetreden bij het verzenden.
+                </div>
               </div>
             </div>
 
@@ -833,6 +843,8 @@
           const templateParams = {
             name: event.target.name.value,
             email: event.target.email.value,
+            phone: event.target.phone.value,
+            subject: event.target.subject.value,
             message: event.target.message.value,
           };
 
@@ -841,9 +853,19 @@
             .then(
               function (response) {
                 console.log("SUCCESS!", response.status, response.text);
+                // Formulier leegmaken na succesvol verzenden
+                event.target.reset();
+                // Succesbericht weergeven
+                document.getElementById("successMessage").style.display =
+                  "block";
+                document.getElementById("errorMessage").style.display = "none";
               },
               function (error) {
                 console.log("FAILED...", error);
+                // Foutbericht weergeven
+                document.getElementById("successMessage").style.display =
+                  "none";
+                document.getElementById("errorMessage").style.display = "block";
               }
             );
         });
